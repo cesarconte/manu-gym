@@ -22,7 +22,9 @@
     "clean": "rm -rf dist node_modules/.vite",
     "deploy:gh-pages": "npm run build && npx gh-pages -d dist",
     "serve": "npm run build && npm run preview",
-    "analyze": "npx vite-bundle-analyzer"
+    "analyze": "npx vite-bundle-analyzer",
+    "ci:validate": "npm run lint:check && npm run build && npm run test:unit",
+    "ci:full": "npm run ci:validate && npm run test:e2e"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
