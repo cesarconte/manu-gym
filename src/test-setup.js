@@ -11,7 +11,7 @@ vi.mock('*.svg', () => 'test-file-stub')
 // Mock básico de window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: vi.fn().mockImplementation(query => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -20,7 +20,7 @@ Object.defineProperty(window, 'matchMedia', {
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
-  }))
+  })),
 })
 
 // Mock de ResizeObserver
@@ -56,7 +56,7 @@ const mockVuetifyComponents = {
   VList: { template: '<div data-testid="v-list"><slot></slot></div>' },
   VListItem: { template: '<div data-testid="v-list-item"><slot></slot></div>' },
   VListItemTitle: { template: '<div data-testid="v-list-item-title"><slot></slot></div>' },
-  VFooter: { template: '<div data-testid="v-footer"><slot></slot></div>' }
+  VFooter: { template: '<div data-testid="v-footer"><slot></slot></div>' },
 }
 
 config.global.components = mockVuetifyComponents

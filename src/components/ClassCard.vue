@@ -85,15 +85,25 @@ const handleViewDetails = () => {
 </script>
 
 <template>
-  <v-card class="class-card" elevation="2" hover>
+  <v-card
+    elevation="2"
+    hover
+    class="transition-all-ease"
+    style="transition: all 0.3s ease; max-width: 100%"
+  >
     <!-- Header con imagen/icono -->
-    <div class="class-header" :class="gradientClass">
-      <v-icon size="48" color="white" class="class-icon">{{ classIcon }}</v-icon>
+    <div
+      class="d-flex align-center justify-center position-relative overflow-hidden"
+      :class="gradientClass"
+      style="height: 120px"
+    >
+      <v-icon size="48" color="white" style="opacity: 0.9">{{ classIcon }}</v-icon>
       <v-chip
         v-if="classInfo.difficulty"
         :color="difficultyColor"
         size="small"
-        class="difficulty-chip"
+        class="position-absolute"
+        style="top: 12px; right: 12px"
         variant="elevated"
       >
         {{ classInfo.difficulty }}
@@ -101,66 +111,73 @@ const handleViewDetails = () => {
     </div>
 
     <!-- Contenido principal -->
-    <v-card-text class="class-content">
-      <div class="class-info">
-        <h3 class="class-name">{{ classInfo.name }}</h3>
-        <p class="class-description">{{ classInfo.description }}</p>
+    <v-card-text class="pa-6">
+      <h3 class="text-h6 font-weight-semibold text-on-surface mb-2">{{ classInfo.name }}</h3>
+      <p class="text-body-2 text-medium-emphasis mb-4" style="line-height: 1.4">
+        {{ classInfo.description }}
+      </p>
 
-        <!-- Información del instructor -->
-        <div class="instructor-info">
-          <v-avatar size="32" class="me-2">
-            <v-img
-              v-if="classInfo.instructor.avatar"
-              :src="classInfo.instructor.avatar"
-              :alt="classInfo.instructor.name"
-            />
-            <v-icon v-else>mdi-account</v-icon>
-          </v-avatar>
-          <div>
-            <p class="instructor-name">{{ classInfo.instructor.name }}</p>
-            <p class="instructor-title">{{ classInfo.instructor.title || 'Instructor' }}</p>
-          </div>
+      <!-- Información del instructor -->
+      <div
+        class="d-flex align-center pa-3 mb-4 rounded-lg bg-surface-variant"
+        style="background-color: rgba(var(--v-theme-surface-variant), 0.3)"
+      >
+        <v-avatar size="32" class="me-3">
+          <v-img
+            v-if="classInfo.instructor.avatar"
+            :src="classInfo.instructor.avatar"
+            :alt="classInfo.instructor.name"
+          />
+          <v-icon v-else>mdi-account</v-icon>
+        </v-avatar>
+        <div>
+          <p class="text-body-2 font-weight-medium text-on-surface ma-0">
+            {{ classInfo.instructor.name }}
+          </p>
+          <p class="text-caption text-medium-emphasis ma-0">
+            {{ classInfo.instructor.title || 'Instructor' }}
+          </p>
         </div>
+      </div>
 
-        <!-- Detalles de la clase -->
-        <div class="class-details">
-          <div class="detail-item">
-            <v-icon size="16" class="me-1">mdi-clock-outline</v-icon>
-            <span>{{ classInfo.duration }} min</span>
-          </div>
+      <!-- Detalles de la clase -->
+      <div class="d-flex flex-wrap ga-3 mb-4">
+        <v-chip size="small" variant="tonal" class="text-caption">
+          <v-icon start size="16">mdi-clock-outline</v-icon>
+          {{ classInfo.duration }} min
+        </v-chip>
 
-          <div v-if="classInfo.maxParticipants" class="detail-item">
-            <v-icon size="16" class="me-1">mdi-account-group</v-icon>
-            <span>Máx. {{ classInfo.maxParticipants }} personas</span>
-          </div>
+        <v-chip v-if="classInfo.maxParticipants" size="small" variant="tonal" class="text-caption">
+          <v-icon start size="16">mdi-account-group</v-icon>
+          Máx. {{ classInfo.maxParticipants }} personas
+        </v-chip>
 
-          <div v-if="classInfo.equipment" class="detail-item">
-            <v-icon size="16" class="me-1">mdi-dumbbell</v-icon>
-            <span>{{ classInfo.equipment }}</span>
-          </div>
-        </div>
+        <v-chip v-if="classInfo.equipment" size="small" variant="tonal" class="text-caption">
+          <v-icon start size="16">mdi-dumbbell</v-icon>
+          {{ classInfo.equipment }}
+        </v-chip>
+      </div>
 
-        <!-- Horarios disponibles -->
-        <div v-if="classInfo.schedule?.length" class="class-schedule">
-          <h4 class="schedule-title">Próximas sesiones:</h4>
-          <div class="schedule-chips">
-            <v-chip
-              v-for="(session, index) in classInfo.schedule.slice(0, 3)"
-              :key="index"
-              variant="outlined"
-              size="small"
-              class="schedule-chip"
-            >
-              <v-icon start size="14">mdi-calendar</v-icon>
-              {{ session.day }} {{ session.time }}
-            </v-chip>
-          </div>
+      <!-- Horarios disponibles -->
+      <div v-if="classInfo.schedule?.length" class="mb-2">
+        <h4 class="text-body-2 font-weight-medium text-on-surface mb-2">Próximas sesiones:</h4>
+        <div class="d-flex flex-wrap ga-2">
+          <v-chip
+            v-for="(session, index) in classInfo.schedule.slice(0, 3)"
+            :key="index"
+            variant="outlined"
+            size="small"
+            class="text-caption"
+          >
+            <v-icon start size="14">mdi-calendar</v-icon>
+            {{ session.day }} {{ session.time }}
+          </v-chip>
         </div>
       </div>
     </v-card-text>
 
     <!-- Acciones -->
-    <v-card-actions class="class-actions">
+    <v-card-actions class="pa-3 pt-0 border-t-thin">
       <v-btn variant="text" size="small" @click="handleViewDetails">
         <v-icon start>mdi-information</v-icon>
         Detalles
@@ -181,137 +198,3 @@ const handleViewDetails = () => {
     </v-card-actions>
   </v-card>
 </template>
-
-<style scoped>
-.class-card {
-  max-width: 100%;
-  transition: all 0.3s ease;
-}
-
-.class-card:hover {
-  transform: translateY(-2px);
-}
-
-/* Header de la clase */
-.class-header {
-  position: relative;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.class-icon {
-  opacity: 0.9;
-}
-
-.difficulty-chip {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-}
-
-/* Contenido */
-.class-content {
-  padding: 1.5rem;
-}
-
-.class-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: rgb(var(--v-theme-on-surface));
-  margin-bottom: 0.5rem;
-}
-
-.class-description {
-  color: rgb(var(--v-theme-on-surface-variant));
-  font-size: 0.875rem;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-}
-
-/* Información del instructor */
-.instructor-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: rgba(var(--v-theme-surface-variant), 0.3);
-  border-radius: 8px;
-}
-
-.instructor-name {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: rgb(var(--v-theme-on-surface));
-  margin: 0;
-}
-
-.instructor-title {
-  font-size: 0.75rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-  margin: 0;
-}
-
-/* Detalles de la clase */
-.class-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.detail-item {
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-  background-color: rgba(var(--v-theme-surface-variant), 0.5);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-}
-
-/* Horarios */
-.class-schedule {
-  margin-bottom: 0.5rem;
-}
-
-.schedule-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgb(var(--v-theme-on-surface));
-  margin-bottom: 0.5rem;
-}
-
-.schedule-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.schedule-chip {
-  font-size: 0.75rem;
-}
-
-/* Acciones */
-.class-actions {
-  padding: 0.75rem 1.5rem;
-  border-top: 1px solid rgba(var(--v-theme-outline), 0.12);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .class-header {
-    height: 100px;
-  }
-
-  .class-content {
-    padding: 1rem;
-  }
-
-  .class-actions {
-    padding: 0.75rem 1rem;
-  }
-}
-</style>

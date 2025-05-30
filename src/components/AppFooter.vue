@@ -34,89 +34,89 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <v-footer class="app-footer" color="surface" elevation="8">
+  <v-footer color="surface" elevation="8" class="mt-auto border-t-thin">
     <v-container>
       <v-row>
         <!-- Información del gimnasio -->
         <v-col cols="12" md="4" class="mb-4">
-          <div class="footer-section">
-            <h3 class="footer-title">
-              <v-icon color="primary" class="me-2">mdi-dumbbell</v-icon>
-              {{ gymInfo.name }}
-            </h3>
-            <p class="footer-description">
-              Tu mejor versión te está esperando. Únete a nuestra comunidad de fitness y transforma
-              tu vida.
-            </p>
+          <h3 class="text-h5 font-weight-bold text-on-surface mb-4 d-flex align-center">
+            <v-icon color="primary" class="me-2">mdi-dumbbell</v-icon>
+            {{ gymInfo.name }}
+          </h3>
+          <p class="text-body-2 text-medium-emphasis mb-6" style="line-height: 1.6">
+            Tu mejor versión te está esperando. Únete a nuestra comunidad de fitness y transforma tu
+            vida.
+          </p>
 
-            <!-- Redes sociales -->
-            <div class="social-links">
-              <v-btn
-                v-for="social in socialLinks"
-                :key="social.name"
-                :href="social.url"
-                :aria-label="social.name"
-                variant="text"
-                icon
-                size="small"
-                class="me-2"
-              >
-                <v-icon>{{ social.icon }}</v-icon>
-              </v-btn>
-            </div>
+          <!-- Redes sociales -->
+          <div class="d-flex align-center">
+            <v-btn
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.url"
+              :aria-label="social.name"
+              variant="text"
+              icon
+              size="small"
+              class="me-2"
+            >
+              <v-icon>{{ social.icon }}</v-icon>
+            </v-btn>
           </div>
         </v-col>
 
         <!-- Enlaces rápidos -->
         <v-col cols="12" sm="6" md="2" class="mb-4">
-          <div class="footer-section">
-            <h4 class="footer-subtitle">Enlaces Rápidos</h4>
-            <v-list class="footer-list" density="compact">
-              <v-list-item
-                v-for="link in quickLinks"
-                :key="link.title"
-                :to="link.to"
-                class="footer-link"
-              >
-                <v-list-item-title>{{ link.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </div>
+          <h4 class="text-subtitle-1 font-weight-semibold text-on-surface mb-4">Enlaces Rápidos</h4>
+          <v-list density="compact" class="bg-transparent pa-0">
+            <v-list-item
+              v-for="link in quickLinks"
+              :key="link.title"
+              :to="link.to"
+              class="pa-1 rounded"
+              min-height="auto"
+            >
+              <v-list-item-title class="text-body-2 text-medium-emphasis">{{
+                link.title
+              }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-col>
 
         <!-- Información de contacto -->
         <v-col cols="12" sm="6" md="3" class="mb-4">
-          <div class="footer-section">
-            <h4 class="footer-subtitle">Contacto</h4>
-            <div class="contact-info">
-              <div class="contact-item">
-                <v-icon size="small" class="me-2">mdi-map-marker</v-icon>
-                <span>{{ gymInfo.address }}</span>
-              </div>
-              <div class="contact-item">
-                <v-icon size="small" class="me-2">mdi-phone</v-icon>
-                <a :href="`tel:${gymInfo.phone}`">{{ gymInfo.phone }}</a>
-              </div>
-              <div class="contact-item">
-                <v-icon size="small" class="me-2">mdi-email</v-icon>
-                <a :href="`mailto:${gymInfo.email}`">{{ gymInfo.email }}</a>
-              </div>
+          <h4 class="text-subtitle-1 font-weight-semibold text-on-surface mb-4">Contacto</h4>
+          <div class="d-flex flex-column ga-3">
+            <div class="d-flex align-start ga-2 text-body-2 text-medium-emphasis">
+              <v-icon size="small">mdi-map-marker</v-icon>
+              <span>{{ gymInfo.address }}</span>
+            </div>
+            <div class="d-flex align-start ga-2 text-body-2 text-medium-emphasis">
+              <v-icon size="small">mdi-phone</v-icon>
+              <a :href="`tel:${gymInfo.phone}`" class="text-decoration-none text-medium-emphasis">
+                {{ gymInfo.phone }}
+              </a>
+            </div>
+            <div class="d-flex align-start ga-2 text-body-2 text-medium-emphasis">
+              <v-icon size="small">mdi-email</v-icon>
+              <a
+                :href="`mailto:${gymInfo.email}`"
+                class="text-decoration-none text-medium-emphasis"
+              >
+                {{ gymInfo.email }}
+              </a>
             </div>
           </div>
         </v-col>
 
         <!-- Horarios -->
         <v-col cols="12" md="3" class="mb-4">
-          <div class="footer-section">
-            <h4 class="footer-subtitle">Horarios</h4>
-            <div class="schedule-info">
-              <div class="schedule-item">
-                <v-icon size="small" class="me-2">mdi-clock-outline</v-icon>
-                <div>
-                  <div class="schedule-text">{{ gymInfo.schedule.weekdays }}</div>
-                  <div class="schedule-text">{{ gymInfo.schedule.weekend }}</div>
-                </div>
-              </div>
+          <h4 class="text-subtitle-1 font-weight-semibold text-on-surface mb-4">Horarios</h4>
+          <div class="d-flex align-start ga-2 text-body-2 text-medium-emphasis">
+            <v-icon size="small">mdi-clock-outline</v-icon>
+            <div style="line-height: 1.4">
+              <div>{{ gymInfo.schedule.weekdays }}</div>
+              <div>{{ gymInfo.schedule.weekend }}</div>
             </div>
           </div>
         </v-col>
@@ -127,137 +127,22 @@ const currentYear = new Date().getFullYear()
 
       <v-row align="center">
         <v-col cols="12" md="6">
-          <p class="copyright">
+          <p class="text-body-2 text-medium-emphasis ma-0">
             © {{ currentYear }} {{ gymInfo.name }}. Todos los derechos reservados.
           </p>
         </v-col>
-        <v-col cols="12" md="6" class="text-md-end">
-          <div class="footer-links">
-            <a href="#" class="footer-link-inline">Política de Privacidad</a>
-            <span class="mx-2">•</span>
-            <a href="#" class="footer-link-inline">Términos de Servicio</a>
+        <v-col cols="12" md="6" class="text-md-end text-center text-md-end">
+          <div class="d-flex align-center justify-center justify-md-end mt-2 mt-md-0">
+            <a href="#" class="text-decoration-none text-body-2 text-medium-emphasis">
+              Política de Privacidad
+            </a>
+            <span class="mx-2 text-medium-emphasis">•</span>
+            <a href="#" class="text-decoration-none text-body-2 text-medium-emphasis">
+              Términos de Servicio
+            </a>
           </div>
         </v-col>
       </v-row>
     </v-container>
   </v-footer>
 </template>
-
-<style scoped>
-.app-footer {
-  margin-top: auto;
-  border-top: 1px solid rgba(var(--v-theme-outline), 0.12);
-}
-
-.footer-section {
-  height: 100%;
-}
-
-.footer-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: rgb(var(--v-theme-on-surface));
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.footer-subtitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgb(var(--v-theme-on-surface));
-  margin-bottom: 1rem;
-}
-
-.footer-description {
-  color: rgb(var(--v-theme-on-surface-variant));
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.social-links {
-  display: flex;
-  align-items: center;
-}
-
-.footer-list {
-  background: transparent;
-  padding: 0;
-}
-
-.footer-link {
-  padding: 0.25rem 0;
-  min-height: auto;
-}
-
-.footer-link :deep(.v-list-item-title) {
-  color: rgb(var(--v-theme-on-surface-variant));
-  font-size: 0.875rem;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover :deep(.v-list-item-title) {
-  color: rgb(var(--v-theme-primary));
-}
-
-.contact-info,
-.schedule-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.contact-item,
-.schedule-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-  font-size: 0.875rem;
-}
-
-.contact-item a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-item a:hover {
-  color: rgb(var(--v-theme-primary));
-}
-
-.schedule-text {
-  line-height: 1.4;
-}
-
-.copyright {
-  color: rgb(var(--v-theme-on-surface-variant));
-  font-size: 0.875rem;
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-link-inline {
-  color: rgb(var(--v-theme-on-surface-variant));
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.2s ease;
-}
-
-.footer-link-inline:hover {
-  color: rgb(var(--v-theme-primary));
-}
-
-/* Responsive */
-@media (max-width: 960px) {
-  .footer-links {
-    justify-content: center;
-    margin-top: 0.5rem;
-  }
-}
-</style>

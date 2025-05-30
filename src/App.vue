@@ -10,7 +10,3 @@ import MainLayout from '@/layouts/MainLayout.vue'
     </MainLayout>
   </v-app>
 </template>
-
-<style scoped>
-/* Los estilos globales están en assets/main.css */
-</style>

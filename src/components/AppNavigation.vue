@@ -32,7 +32,7 @@ const toggleTheme = () => {
     <v-app-bar-nav-icon v-if="mobile" @click="drawer = !drawer" />
 
     <!-- Logo -->
-    <v-app-bar-title class="logo">
+    <v-app-bar-title class="d-flex align-center text-h6 font-weight-bold">
       <v-icon size="32" color="primary" class="me-2">mdi-dumbbell</v-icon>
       <span class="text-gradient-primary">Manu Gym</span>
     </v-app-bar-title>
@@ -46,7 +46,7 @@ const toggleTheme = () => {
         :key="item.title"
         :to="item.to"
         variant="text"
-        class="nav-item"
+        class="mx-1 text-none font-weight-medium"
       >
         <v-icon start>{{ item.icon }}</v-icon>
         {{ item.title }}
@@ -70,7 +70,7 @@ const toggleTheme = () => {
   <!-- Navigation Drawer para móvil -->
   <v-navigation-drawer v-model="drawer" temporary location="left" width="280">
     <!-- Header del drawer -->
-    <v-list-item class="drawer-header bg-gradient-subtle">
+    <v-list-item class="pa-4 bg-gradient-subtle">
       <template #prepend>
         <v-avatar size="40" color="primary">
           <v-icon color="white">mdi-dumbbell</v-icon>
@@ -104,7 +104,7 @@ const toggleTheme = () => {
     <!-- Footer del drawer -->
     <template #append>
       <v-divider />
-      <v-list-item class="drawer-footer">
+      <v-list-item class="pa-2">
         <v-btn @click="toggleTheme" variant="text" block>
           <v-icon start>{{
             theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'
@@ -115,37 +115,3 @@ const toggleTheme = () => {
     </template>
   </v-navigation-drawer>
 </template>
-
-<style scoped>
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.nav-item {
-  margin: 0 0.25rem;
-  text-transform: none;
-  font-weight: 500;
-}
-
-.drawer-header {
-  padding: 1rem;
-}
-
-.drawer-footer {
-  padding: 0.5rem;
-}
-
-/* Estados activos */
-.v-list-item--active {
-  color: rgb(var(--v-theme-primary));
-  background-color: rgba(var(--v-theme-primary), 0.12);
-}
-
-.v-btn--active {
-  background-color: rgba(var(--v-theme-primary), 0.12);
-  color: rgb(var(--v-theme-primary));
-}
-</style>
