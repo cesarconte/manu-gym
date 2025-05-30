@@ -1,5 +1,7 @@
 # 🏋️ Manu Gym - Aplicación Web
 
+<!-- Aplicación web moderna para gimnasio desarrollada con Vue 3 + Vuetify 3 -->
+
 [![Vue.js](https://img.shields.io/badge/Vue.js-v3.4-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![Vuetify](https://img.shields.io/badge/Vuetify-v3.0-1867C0?style=for-the-badge&logo=vuetify&logoColor=white)](https://vuetifyjs.com/)
 [![Vite](https://img.shields.io/badge/Vite-v6.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
