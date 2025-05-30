@@ -1,0 +1,98 @@
+/* Gradientes globales para Manu Gym */
+
+/* Gradiente primario a secundario (135 grados) - Para fondos principales */
+.bg-gradient-primary {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--v-theme-primary)),
+    rgb(var(--v-theme-secondary))
+  ) !important;
+}
+
+/* Gradiente primario a secundario (45 grados) - Para textos y efectos */
+.text-gradient-primary {
+  background: linear-gradient(45deg, rgb(var(--v-theme-primary)), rgb(var(--v-theme-secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradiente de colores claros - Para hero textos destacados */
+.text-gradient-light {
+  background: linear-gradient(45deg, #ffe082, #fff3e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradiente sutil para fondos suaves (CTA sections) */
+.bg-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--v-theme-primary), 0.1),
+    rgba(var(--v-theme-secondary), 0.1)
+  ) !important;
+}
+
+/* Gradientes para tipos de clases */
+.bg-gradient-yoga {
+  background: linear-gradient(135deg, #8bc34a, #4caf50) !important;
+}
+
+.bg-gradient-pilates {
+  background: linear-gradient(135deg, #9c27b0, #673ab7) !important;
+}
+
+.bg-gradient-zumba {
+  background: linear-gradient(135deg, #ff5722, #ff9800) !important;
+}
+
+.bg-gradient-spinning {
+  background: linear-gradient(135deg, #2196f3, #03a9f4) !important;
+}
+
+.bg-gradient-crossfit {
+  background: linear-gradient(135deg, #795548, #607d8b) !important;
+}
+
+.bg-gradient-boxeo {
+  background: linear-gradient(135deg, #f44336, #e91e63) !important;
+}
+
+/* Gradientes adicionales para casos especiales */
+.bg-gradient-functional {
+  background: linear-gradient(135deg, #607d8b, #455a64) !important;
+}
+
+.bg-gradient-natacion {
+  background: linear-gradient(135deg, #00bcd4, #0097a7) !important;
+}
+
+/* Gradientes para modo oscuro - Versiones más suaves */
+.v-theme--dark .bg-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--v-theme-primary), 0.08),
+    rgba(var(--v-theme-secondary), 0.08)
+  ) !important;
+}
+
+/* Gradiente heroico para fondos destacados */
+.bg-gradient-hero {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--v-theme-primary)),
+    rgba(var(--v-theme-primary), 0.8),
+    rgb(var(--v-theme-secondary))
+  ) !important;
+}
+
+/* Gradiente para overlays */
+.bg-gradient-overlay {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  ) !important;
+}

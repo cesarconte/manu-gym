@@ -1,0 +1,395 @@
+/* CSS Reset y estilos base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  background-color: var(--background);
+  color: var(--on-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
+/* Variables CSS para Material Design 3 - Tema Gimnasio */
+:root {
+  /* ===== COLORES PRIMARIOS ===== */
+  /* Naranja energético para motivación y energía */
+  --primary: #ff5722;
+  --primary-90: #ffede8;
+  --primary-80: #ffccbc;
+  --primary-70: #ffab91;
+  --primary-60: #ff8a65;
+  --primary-50: #ff7043;
+  --primary-40: #ff5722;
+  --primary-30: #f4511e;
+  --primary-20: #e64a19;
+  --primary-10: #d84315;
+  --primary-0: #bf360c;
+
+  /* ===== COLORES SECUNDARIOS ===== */
+  /* Azul para confianza y profesionalidad */
+  --secondary: #2196f3;
+  --secondary-90: #e3f2fd;
+  --secondary-80: #bbdefb;
+  --secondary-70: #90caf9;
+  --secondary-60: #64b5f6;
+  --secondary-50: #42a5f5;
+  --secondary-40: #2196f3;
+  --secondary-30: #1e88e5;
+  --secondary-20: #1976d2;
+  --secondary-10: #1565c0;
+  --secondary-0: #0d47a1;
+
+  /* ===== COLORES TERCIARIOS ===== */
+  /* Verde para éxito y salud */
+  --tertiary: #4caf50;
+  --tertiary-90: #e8f5e8;
+  --tertiary-80: #c8e6c9;
+  --tertiary-70: #a5d6a7;
+  --tertiary-60: #81c784;
+  --tertiary-50: #66bb6a;
+  --tertiary-40: #4caf50;
+  --tertiary-30: #43a047;
+  --tertiary-20: #388e3c;
+  --tertiary-10: #2e7d32;
+  --tertiary-0: #1b5e20;
+
+  /* ===== COLORES NEUTROS ===== */
+  --neutral-100: #ffffff;
+  --neutral-98: #fefefe;
+  --neutral-95: #f6f6f6;
+  --neutral-90: #e0e0e0;
+  --neutral-80: #bdbdbd;
+  --neutral-70: #9e9e9e;
+  --neutral-60: #757575;
+  --neutral-50: #616161;
+  --neutral-40: #424242;
+  --neutral-30: #303030;
+  --neutral-20: #212121;
+  --neutral-10: #121212;
+  --neutral-0: #000000;
+
+  /* ===== COLORES DE ESTADO ===== */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #f44336;
+  --info: #2196f3;
+
+  /* Variantes de estado */
+  --success-light: #81c784;
+  --warning-light: #ffb74d;
+  --error-light: #e57373;
+  --info-light: #64b5f6;
+
+  --success-dark: #388e3c;
+  --warning-dark: #f57c00;
+  --error-dark: #d32f2f;
+  --info-dark: #1976d2;
+
+  /* ===== MODO CLARO (por defecto) ===== */
+  --primary-color: var(--primary);
+  --secondary-color: var(--secondary);
+  --tertiary-color: var(--tertiary);
+
+  --background: var(--neutral-100);
+  --surface: var(--neutral-100);
+  --surface-variant: var(--neutral-95);
+  --surface-container: var(--neutral-98);
+  --surface-container-low: var(--neutral-100);
+  --surface-container-high: var(--neutral-95);
+  --surface-container-highest: var(--neutral-90);
+
+  --on-primary: var(--neutral-100);
+  --on-secondary: var(--neutral-100);
+  --on-tertiary: var(--neutral-100);
+  --on-background: var(--neutral-20);
+  --on-surface: var(--neutral-20);
+  --on-surface-variant: var(--neutral-40);
+  --on-error: var(--neutral-100);
+
+  --outline: var(--neutral-70);
+  --outline-variant: var(--neutral-80);
+  --shadow: var(--neutral-0);
+  --scrim: var(--neutral-0);
+
+  /* ===== ESPACIADOS MATERIAL DESIGN 3 ===== */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Aliases para compatibilidad */
+  --spacing-xs: var(--spacing-1);
+  --spacing-sm: var(--spacing-2);
+  --spacing-md: var(--spacing-4);
+  --spacing-lg: var(--spacing-6);
+  --spacing-xl: var(--spacing-8);
+  --spacing-2xl: var(--spacing-12);
+  --spacing-3xl: var(--spacing-16);
+
+  /* ===== TIPOGRAFÍA MATERIAL DESIGN 3 ===== */
+  --font-family-primary:
+    'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-secondary: 'Roboto Condensed', var(--font-family-primary);
+  --font-family-mono:
+    'Roboto Mono', 'SF Mono', Monaco, Inconsolata, 'Fira Code', 'Droid Sans Mono',
+    'Source Code Pro', monospace;
+
+  /* Tamaños de fuente */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+
+  /* Pesos de fuente */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ===== ELEVACIONES Y SOMBRAS ===== */
+  --elevation-0: none;
+  --elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  --elevation-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+  --elevation-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+
+  /* Aliases para compatibilidad */
+  --shadow-1: var(--elevation-1);
+  --shadow-2: var(--elevation-2);
+  --shadow-3: var(--elevation-3);
+  --shadow-4: var(--elevation-4);
+  --shadow-5: var(--elevation-5);
+
+  /* ===== BORDES Y RADIO ===== */
+  --border-radius-none: 0px;
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  --border-radius-2xl: 24px;
+  --border-radius-3xl: 28px;
+  --border-radius-full: 9999px;
+
+  /* Aliases para compatibilidad */
+  --border-radius: var(--border-radius-xs);
+  --border-radius-lg: var(--border-radius-md);
+
+  /* ===== TRANSICIONES ===== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===== Z-INDEX ===== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ===== CONTENEDORES RESPONSIVOS ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-sm {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-lg {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .container,
+  .container-sm,
+  .container-lg,
+  .container-fluid {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .container-sm,
+  .container-lg,
+  .container-fluid {
+    padding: 0 var(--spacing-xs);
+  }
+}
+
+/* ===== UTILIDADES DE ACCESIBILIDAD ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible mejorado para accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-xs);
+}
+
+/* Mejora del enfoque para elementos interactivos */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Soporte para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Soporte para alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --outline: var(--neutral-0);
+    --outline-variant: var(--neutral-20);
+  }
+
+  [data-theme='dark'] {
+    --outline: var(--neutral-100);
+    --outline-variant: var(--neutral-80);
+  }
+}
+
+/* ===== MODO OSCURO ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--neutral-10);
+    --surface: var(--neutral-10);
+    --surface-variant: var(--neutral-20);
+    --surface-container: var(--neutral-20);
+    --surface-container-low: var(--neutral-10);
+    --surface-container-high: var(--neutral-30);
+    --surface-container-highest: var(--neutral-40);
+
+    --on-primary: var(--neutral-20);
+    --on-secondary: var(--neutral-20);
+    --on-tertiary: var(--neutral-20);
+    --on-background: var(--neutral-90);
+    --on-surface: var(--neutral-90);
+    --on-surface-variant: var(--neutral-80);
+    --on-error: var(--neutral-20);
+
+    --outline: var(--neutral-60);
+    --outline-variant: var(--neutral-30);
+  }
+}
+
+/* Clase para forzar modo oscuro */
+[data-theme='dark'] {
+  --background: var(--neutral-10);
+  --surface: var(--neutral-10);
+  --surface-variant: var(--neutral-20);
+  --surface-container: var(--neutral-20);
+  --surface-container-low: var(--neutral-10);
+  --surface-container-high: var(--neutral-30);
+  --surface-container-highest: var(--neutral-40);
+
+  --on-primary: var(--neutral-20);
+  --on-secondary: var(--neutral-20);
+  --on-tertiary: var(--neutral-20);
+  --on-background: var(--neutral-90);
+  --on-surface: var(--neutral-90);
+  --on-surface-variant: var(--neutral-80);
+  --on-error: var(--neutral-20);
+
+  --outline: var(--neutral-60);
+  --outline-variant: var(--neutral-30);
+}
+
+/* Clase para forzar modo claro */
+[data-theme='light'] {
+  --background: var(--neutral-100);
+  --surface: var(--neutral-100);
+  --surface-variant: var(--neutral-95);
+  --surface-container: var(--neutral-98);
+  --surface-container-low: var(--neutral-100);
+  --surface-container-high: var(--neutral-95);
+  --surface-container-highest: var(--neutral-90);
+
+  --on-primary: var(--neutral-100);
+  --on-secondary: var(--neutral-100);
+  --on-tertiary: var(--neutral-100);
+  --on-background: var(--neutral-20);
+  --on-surface: var(--neutral-20);
+  --on-surface-variant: var(--neutral-40);
+  --on-error: var(--neutral-100);
+
+  --outline: var(--neutral-70);
+  --outline-variant: var(--neutral-80);
+}
