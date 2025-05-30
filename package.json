@@ -8,9 +8,21 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
+    "test:unit:ui": "vitest --ui",
+    "test:unit:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test": "npm run test:unit && npm run test:e2e",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "lint:check": "eslint .",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "type-check": "vue-tsc --noEmit",
+    "clean": "rm -rf dist node_modules/.vite",
+    "deploy:gh-pages": "npm run build && npx gh-pages -d dist",
+    "serve": "npm run build && npm run preview",
+    "analyze": "npx vite-bundle-analyzer"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",

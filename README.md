@@ -1,6 +1,31 @@
 # 🏋️ Manu Gym - Aplicación Web
 
+[![Vue.js](https://img.shields.io/badge/Vue.js-v3.4-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![Vuetify](https://img.shields.io/badge/Vuetify-v3.0-1867C0?style=for-the-badge&logo=vuetify&logoColor=white)](https://vuetifyjs.com/)
+[![Vite](https://img.shields.io/badge/Vite-v6.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/cesarconte/manu-gym/ci.yml?branch=main&style=for-the-badge&logo=github&logoColor=white)](https://github.com/cesarconte/manu-gym/actions)
+[![Deploy Status](https://img.shields.io/github/deployments/cesarconte/manu-gym/github-pages?style=for-the-badge&logo=github&logoColor=white&label=Deploy)](https://github.com/cesarconte/manu-gym/deployments)
+[![License](https://img.shields.io/github/license/cesarconte/manu-gym?style=for-the-badge&color=green)](./LICENSE)
+[![Code Quality](https://img.shields.io/badge/ESLint-Passed-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
+[![Playwright Tests](https://img.shields.io/badge/E2E_Tests-Playwright-45ba4b?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+
+[![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/cesarconte)
+[![Material Design 3](https://img.shields.io/badge/Design-Material%20Design%203-blue?style=for-the-badge&logo=material-design&logoColor=white)](https://m3.material.io/)
+[![Responsive](https://img.shields.io/badge/Mobile-Responsive-orange?style=for-the-badge&logo=responsive&logoColor=white)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=vercel&logoColor=white)](https://cesarconte.github.io/manu-gym/)
+
 Una aplicación web moderna y completa para la gestión de un gimnasio, desarrollada con **Vue 3 + Vuetify 3 + Composition API**, siguiendo las mejores prácticas de desarrollo y un sistema de diseño Material Design 3.
+
+## 📊 **Estadísticas del Proyecto**
+
+[![GitHub stars](https://img.shields.io/github/stars/cesarconte/manu-gym?style=social)](https://github.com/cesarconte/manu-gym/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/cesarconte/manu-gym?style=social)](https://github.com/cesarconte/manu-gym/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/cesarconte/manu-gym?color=red)](https://github.com/cesarconte/manu-gym/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/cesarconte/manu-gym?color=blue)](https://github.com/cesarconte/manu-gym/pulls)
+[![GitHub last commit](https://img.shields.io/github/last-commit/cesarconte/manu-gym)](https://github.com/cesarconte/manu-gym/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/cesarconte/manu-gym)](https://github.com/cesarconte/manu-gym)
 
 ## ✨ **Características Principales**
 
@@ -118,6 +143,25 @@ npm run format
 
 - **Desarrollo**: http://localhost:5173
 - **Vista previa**: npm run preview
+
+## 🚀 **Deployment**
+
+### GitHub Pages (Recomendado)
+
+El proyecto está configurado para deployment automático en GitHub Pages:
+
+1. **Fork** este repositorio
+2. Ve a **Settings** > **Pages**
+3. Selecciona **GitHub Actions** como fuente
+4. El sitio se desplegará automáticamente en cada push a `main`
+
+### Otros Servicios
+
+Compatible con:
+
+- **Vercel**: Deployment automático conectando el repo
+- **Netlify**: Drag & drop de la carpeta `dist/`
+- **Firebase Hosting**: `npm run build && firebase deploy`
 
 ## 📁 **Estructura del Proyecto**
 
