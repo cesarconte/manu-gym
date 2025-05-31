@@ -1,0 +1,571 @@
+/**
+ * Fluid Typography System - Kevin Powell Technique
+ * Sistema de tipografía fluida usando clamp() para responsividad perfecta
+ * Compatible con Material Design 3 y Vuetify 3
+ */
+
+/* ========================================
+   📏 FLUID TYPOGRAPHY UTILITIES
+   ======================================== */
+
+.text-fluid-hero {
+  font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-fluid-display {
+  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-fluid-heading-1 {
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-fluid-heading-2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-fluid-heading-3 {
+  font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-fluid-body-large {
+  font-size: clamp(1.125rem, 1vw + 0.5rem, 1.25rem);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-fluid-body {
+  font-size: clamp(1rem, 0.5vw + 0.75rem, 1.125rem);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-fluid-small {
+  font-size: clamp(0.875rem, 0.25vw + 0.75rem, 1rem);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+}
+
+/* ========================================
+   🎯 ADVANCED FLUID TYPOGRAPHY - Kevin Powell
+   ======================================== */
+
+/* Contextual fluid typography */
+.text-fluid-contextual {
+  font-size: clamp(1rem, 1rem + 1cqi, 1.5rem);
+  line-height: calc(1.2 + 0.5 * (1cqi / 1rem));
+}
+
+/* Responsive line height */
+.text-fluid-responsive-lh {
+  line-height: clamp(1.2, 1rem + 0.5vw, 1.8);
+}
+
+/* Fluid text scaling with viewport and container */
+.text-fluid-hybrid {
+  font-size: clamp(1rem, 0.8rem + 0.5vw + 0.2cqi, 2rem);
+}
+
+/* ========================================
+   🎨 FLUID SPACING SYSTEM
+   ======================================== */
+
+.space-fluid-section {
+  padding-block: clamp(2rem, 5vw, 6rem);
+}
+
+.space-fluid-component {
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.space-fluid-gap {
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.space-fluid-margin {
+  margin-block: clamp(1rem, 4vw, 3rem);
+}
+
+/* ========================================
+   📱 CONTAINER QUERIES - Modern CSS
+   ======================================== */
+
+.container-adaptive {
+  container-type: inline-size;
+  width: 100%;
+  max-width: var(--container-fluid);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* Container Query Breakpoints */
+@container (min-width: 320px) {
+  .cq-text-sm {
+    font-size: var(--text-sm);
+  }
+}
+
+@container (min-width: 768px) {
+  .cq-text-lg {
+    font-size: var(--text-lg);
+  }
+}
+
+@container (min-width: 1024px) {
+  .cq-text-xl {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ========================================
+   🎭 MODERN CSS LAYOUTS - Grid & Flexbox
+   ======================================== */
+
+.layout-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-lg);
+}
+
+.layout-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.layout-centered {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.layout-sidebar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-lg);
+}
+
+.layout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.layout-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+/* ========================================
+   🌊 INTRINSIC WEB DESIGN
+   ======================================== */
+
+.intrinsic-container {
+  --min-width: 16rem;
+  --gap: var(--space-lg);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.intrinsic-container > * {
+  flex: 1 1 var(--min-width);
+}
+
+/* ========================================
+   ⚡ PROGRESSIVE ENHANCEMENT
+   ======================================== */
+
+/* Base styles for older browsers */
+.enhanced-grid {
+  display: block;
+}
+
+.enhanced-grid > * + * {
+  margin-top: var(--space-md);
+}
+
+/* Enhanced styles for modern browsers */
+@supports (display: grid) {
+  .enhanced-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .enhanced-grid > * + * {
+    margin-top: 0;
+  }
+}
+
+/* Container Queries support */
+@supports (container-type: inline-size) {
+  .enhanced-container {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 600px) {
+    .enhanced-container .grid-cols-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+  }
+}
+
+/* ========================================
+   🎯 UTILITY CLASSES - Kevin Powell Style
+   ======================================== */
+
+/* Modern CSS logical properties */
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.region {
+  padding-block: var(--region-space, var(--space-lg));
+}
+
+.wrapper {
+  max-width: var(--wrapper-max-width, 65ch);
+  margin-inline: auto;
+  padding-inline: var(--wrapper-padding, var(--space-md));
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-space, var(--space-md));
+  justify-content: var(--cluster-justify, flex-start);
+  align-items: var(--cluster-align, center);
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, var(--space-lg));
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-target-width, 20rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: var(--sidebar-content-min-width, 50%);
+}
+
+/* ========================================
+   🎨 MODERN GRADIENTS & EFFECTS
+   ======================================== */
+
+.gradient-text-modern {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-500),
+    var(--color-secondary-500),
+    var(--color-tertiary-500)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.surface-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+}
+
+/* ========================================
+   📱 MODERN RESPONSIVE HELPERS
+   ======================================== */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible modern support */
+.focus-visible-modern:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   📱 CONTAINER QUERY TYPOGRAPHY
+   ======================================== */
+
+/* Typography that adapts to container width */
+.text-container-adaptive {
+  container-type: inline-size;
+}
+
+/* Small container typography */
+@container (max-width: 300px) {
+  .text-container-adaptive .text-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .text-container-adaptive .text-body {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-normal);
+  }
+}
+
+/* Medium container typography */
+@container (min-width: 301px) and (max-width: 600px) {
+  .text-container-adaptive .text-title {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-normal);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .text-container-adaptive .text-body {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+/* Large container typography */
+@container (min-width: 601px) {
+  .text-container-adaptive .text-title {
+    font-size: var(--text-2xl);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .text-container-adaptive .text-body {
+    font-size: var(--text-base);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+/* ========================================
+   🎨 ADVANCED TEXT EFFECTS
+   ======================================== */
+
+/* Gradient text with animation */
+.text-gradient-animated {
+  background: linear-gradient(
+    45deg,
+    rgb(var(--v-theme-primary)),
+    rgb(var(--v-theme-secondary)),
+    rgb(var(--v-theme-tertiary)),
+    rgb(var(--v-theme-primary))
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text-flow 3s ease-in-out infinite;
+}
+
+@keyframes gradient-text-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Text with custom underline */
+.text-underline-custom {
+  text-decoration: none;
+  position: relative;
+}
+
+.text-underline-custom::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(var(--v-theme-primary)), rgb(var(--v-theme-secondary)));
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.text-underline-custom:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   📊 OPTICAL SIZING & VARIABLE FONTS
+   ======================================== */
+
+/* Variable font support */
+@supports (font-variation-settings: normal) {
+  .text-variable-weight {
+    font-variation-settings: 'wght' var(--text-weight, 400);
+    transition: font-variation-settings var(--duration-normal) var(--ease-out);
+  }
+
+  .text-variable-weight:hover {
+    --text-weight: 600;
+  }
+
+  .text-variable-optical {
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' var(--text-optical-size, 16);
+  }
+}
+
+/* Responsive optical sizing */
+.text-optical-responsive {
+  font-optical-sizing: auto;
+}
+
+@media (min-width: 768px) {
+  .text-optical-responsive {
+    font-variation-settings: 'opsz' 24;
+  }
+}
+
+/* ========================================
+   🎭 READING EXPERIENCE ENHANCEMENTS
+   ======================================== */
+
+/* Better text blocks */
+.text-block-enhanced {
+  max-width: 65ch; /* Optimal reading width */
+  text-wrap: balance; /* Balance text wrapping */
+  hyphens: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Enhanced paragraph spacing */
+.text-content-flow > p + p {
+  margin-top: var(--paragraph-spacing, 1.5em);
+}
+
+/* Better list styling */
+.list-enhanced {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-enhanced li {
+  position: relative;
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.list-enhanced li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: rgb(var(--v-theme-primary));
+  font-weight: var(--font-weight-bold);
+}
+
+/* ========================================
+   🌍 INTERNATIONAL TYPOGRAPHY
+   ======================================== */
+
+/* Writing mode support */
+.text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.text-vertical-lr {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+/* Logical properties for international support */
+.text-international {
+  margin-block-start: var(--space-md);
+  margin-block-end: var(--space-md);
+  padding-inline-start: var(--space-md);
+  padding-inline-end: var(--space-md);
+  border-inline-start: 3px solid rgb(var(--v-theme-primary));
+}
+
+/* ========================================
+   📱 RESPONSIVE TEXT UTILITIES
+   ======================================== */
+
+/* Hide text on small screens but keep for screen readers */
+.text-sr-only-mobile {
+  @media (max-width: 767px) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+
+/* Responsive text truncation */
+.text-truncate-responsive {
+  @media (max-width: 767px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
+}

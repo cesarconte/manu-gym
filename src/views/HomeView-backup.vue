@@ -107,7 +107,10 @@ const handleViewDetails = (classInfo) => {
 <template>
   <div class="smooth-scroll">
     <!-- Sección Hero con técnicas modernas -->
-    <section class="cover bg-gradient-primary-animated text-white" style="--cover-min-height: 70vh">
+    <section
+      class="cover bg-gradient-primary-animated text-white"
+      style="--cover-min-height: 70vh"
+    >
       <div class="cover-centered">
         <v-container class="content-container">
           <div class="stack text-center" style="--stack-space: var(--space-xl)">
@@ -120,8 +123,8 @@ const handleViewDetails = (classInfo) => {
                 class="text-fluid-body-large text-white text-wrap-pretty mx-auto animate-fade-in-scale"
                 style="max-width: 60ch; animation-delay: 200ms; opacity: 0.9"
               >
-                Tu mejor versión te está esperando. Únete a nuestra comunidad de fitness y
-                transforma tu vida con nuestras instalaciones de primera clase.
+                Tu mejor versión te está esperando. Únete a nuestra comunidad de fitness y transforma
+                tu vida con nuestras instalaciones de primera clase.
               </p>
             </div>
             <div
@@ -191,12 +194,9 @@ const handleViewDetails = (classInfo) => {
               <h2 class="text-fluid-display font-weight-bold text-wrap-balance">
                 ¿Por qué elegir Manu Gym?
               </h2>
-              <p
-                class="text-fluid-body-large text-on-surface-variant mx-auto text-wrap-pretty"
-                style="max-width: 60ch"
-              >
-                Ofrecemos todo lo que necesitas para alcanzar tus objetivos de fitness con las
-                mejores instalaciones y el equipo más moderno
+              <p class="text-fluid-body-large text-on-surface-variant mx-auto text-wrap-pretty"
+                 style="max-width: 60ch">
+                Ofrecemos todo lo que necesitas para alcanzar tus objetivos de fitness con las mejores instalaciones y el equipo más moderno
               </p>
             </div>
           </div>
@@ -249,12 +249,9 @@ const handleViewDetails = (classInfo) => {
               <h2 class="text-fluid-display font-weight-bold text-wrap-balance">
                 Clases Destacadas
               </h2>
-              <p
-                class="text-fluid-body-large text-on-surface-variant mx-auto text-wrap-pretty"
-                style="max-width: 60ch"
-              >
-                Descubre nuestras clases más populares y encuentra la perfecta para ti. Cada clase
-                está diseñada para diferentes niveles y objetivos
+              <p class="text-fluid-body-large text-on-surface-variant mx-auto text-wrap-pretty"
+                 style="max-width: 60ch">
+                Descubre nuestras clases más populares y encuentra la perfecta para ti. Cada clase está diseñada para diferentes niveles y objetivos
               </p>
             </div>
           </div>
@@ -271,10 +268,7 @@ const handleViewDetails = (classInfo) => {
           />
         </div>
 
-        <div
-          class="cluster mt-8"
-          style="--cluster-justify: center; --cluster-space: var(--space-lg)"
-        >
+        <div class="cluster mt-8" style="--cluster-justify: center; --cluster-space: var(--space-lg)">
           <v-btn
             color="primary"
             variant="outlined"
@@ -297,18 +291,12 @@ const handleViewDetails = (classInfo) => {
               <h2 class="text-fluid-hero font-weight-bold animate-slide-in-up text-wrap-balance">
                 ¿Listo para comenzar tu transformación?
               </h2>
-              <p
-                class="text-fluid-body-large text-white text-wrap-pretty animate-fade-in-scale mx-auto"
-                style="animation-delay: 200ms; max-width: 50ch; opacity: 0.9"
-              >
-                Únete a nuestra comunidad de más de 500 miembros activos y descubre todo lo que
-                puedes lograr con el mejor equipo y entrenadores
+              <p class="text-fluid-body-large text-white text-wrap-pretty animate-fade-in-scale mx-auto"
+                 style="animation-delay: 200ms; max-width: 50ch; opacity: 0.9">
+                Únete a nuestra comunidad de más de 500 miembros activos y descubre todo lo que puedes lograr con el mejor equipo y entrenadores
               </p>
             </div>
-            <div
-              class="cluster"
-              style="--cluster-justify: center; --cluster-space: var(--space-md)"
-            >
+            <div class="cluster" style="--cluster-justify: center; --cluster-space: var(--space-md)">
               <v-btn
                 size="x-large"
                 color="white"
@@ -351,7 +339,7 @@ const handleViewDetails = (classInfo) => {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
   pointer-events: none;
 }
 
@@ -367,15 +355,14 @@ const handleViewDetails = (classInfo) => {
 
 /* Gradient mesh sutil para secciones */
 .bg-gradient-mesh-subtle {
-  background:
-    radial-gradient(at 20% 80%, rgba(var(--v-theme-primary-rgb), 0.05) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, rgba(var(--v-theme-secondary-rgb), 0.05) 0px, transparent 50%),
-    radial-gradient(at 40% 40%, rgba(var(--v-theme-tertiary-rgb), 0.05) 0px, transparent 50%);
+  background: radial-gradient(at 20% 80%, rgba(var(--v-theme-primary-rgb), 0.05) 0px, transparent 50%),
+              radial-gradient(at 80% 20%, rgba(var(--v-theme-secondary-rgb), 0.05) 0px, transparent 50%),
+              radial-gradient(at 40% 40%, rgba(var(--v-theme-tertiary-rgb), 0.05) 0px, transparent 50%);
 }
 
 /* Enhanced text gradient for light backgrounds */
 .text-gradient-light {
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

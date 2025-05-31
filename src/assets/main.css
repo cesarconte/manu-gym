@@ -1,10 +1,18 @@
+/**
+ * Main CSS - Kevin Powell Enhanced System
+ * Sistema principal de estilos con técnicas modernas de CSS
+ * Compatible con Material Design 3 y Vuetify 3
+ */
+
+/* Importar sistemas de diseño */
 @import './base.css';
+@import './design-tokens.css';
+@import './fluid-typography.css';
+@import './container-queries.css';
+@import './gradients.css';
 
 /* Importar fuentes MDI directamente */
 @import '@mdi/font/css/materialdesignicons.css';
-
-/* Importar gradientes personalizados */
-@import './gradients.css';
 
 /* ===== ESTILOS PRINCIPALES DE LA APLICACIÓN ===== */
 #app {
@@ -508,4 +516,660 @@
 }
 .items-stretch {
   align-items: stretch;
+}
+
+/* ========================================
+   🎯 KEVIN POWELL MODERN CSS UTILITIES
+   ======================================== */
+
+/* Better box-sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ========================================
+   🌊 MODERN LAYOUT PRIMITIVES
+   ======================================== */
+
+/* The Stack - Consistent vertical spacing */
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack-space, var(--space-md));
+}
+
+/* The Cluster - Horizontal grouping with wrapping */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-space, var(--space-md));
+  justify-content: var(--cluster-justify, flex-start);
+  align-items: var(--cluster-align, center);
+}
+
+/* The Sidebar - Flexible sidebar layout */
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, var(--space-lg));
+}
+
+.with-sidebar > :first-child {
+  flex-basis: var(--sidebar-target-width, 20rem);
+  flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: var(--sidebar-content-min-width, 50%);
+}
+
+/* The Switcher - Responsive layout switcher */
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--switcher-gap, var(--space-lg));
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-target-width, 30rem) - 100%) * 999);
+}
+
+/* The Cover - Centered content with header/footer */
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--cover-min-height, 100vh);
+  padding: var(--cover-padding, var(--space-lg));
+}
+
+.cover > * {
+  margin-block: var(--cover-space, var(--space-md));
+}
+
+.cover > :first-child:not(.cover-centered) {
+  margin-block-start: 0;
+}
+
+.cover > :last-child:not(.cover-centered) {
+  margin-block-end: 0;
+}
+
+.cover > .cover-centered {
+  margin-block: auto;
+}
+
+/* The Grid - Auto-fit grid layout */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--auto-grid-min-size, 16rem), 1fr));
+  gap: var(--auto-grid-gap, var(--space-lg));
+}
+
+/* ========================================
+   📱 MODERN RESPONSIVE HELPERS
+   ======================================== */
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus visible improvements */
+.focus-visible-enhanced:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-primary));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Container for better content flow */
+.content-wrapper {
+  width: min(100% - var(--space-lg), var(--container-7xl));
+  margin-inline: auto;
+}
+
+/* Flexible media container */
+.media-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.media-wrapper img,
+.media-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.media-wrapper:hover img,
+.media-wrapper:hover video {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   🎨 ENHANCED VUETIFY COMPONENTS
+   ======================================== */
+
+/* Better button focus states */
+.v-btn:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-primary));
+  outline-offset: 2px;
+}
+
+/* Enhanced card hover effects */
+.v-card {
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.v-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Better input focus states */
+.v-field:focus-within {
+  outline: 2px solid rgba(var(--v-theme-primary), 0.3);
+  outline-offset: 1px;
+}
+
+/* ========================================
+   🎭 MODERN ANIMATIONS
+   ======================================== */
+
+/* Smooth entrance animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp var(--duration-normal) var(--ease-out);
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale var(--duration-normal) var(--ease-out);
+}
+
+/* Stagger animations for lists */
+.stagger-animation > * {
+  animation: slideInUp var(--duration-normal) var(--ease-out);
+}
+
+.stagger-animation > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.stagger-animation > *:nth-child(2) {
+  animation-delay: 100ms;
+}
+.stagger-animation > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+.stagger-animation > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+.stagger-animation > *:nth-child(5) {
+  animation-delay: 400ms;
+}
+.stagger-animation > *:nth-child(6) {
+  animation-delay: 500ms;
+}
+
+/* ========================================
+   ⚡ PERFORMANCE & ACCESSIBILITY
+   ======================================== */
+
+/* GPU acceleration for animations */
+.animated-element {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animated-element {
+    will-change: auto;
+    transform: none;
+  }
+}
+
+/* Enhanced theme transitions */
+* {
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
+}
+
+/* Better dark mode text contrast */
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* ========================================
+   🚀 INTRINSIC WEB DESIGN - Kevin Powell Advanced
+   ======================================== */
+
+/* The Reel - Horizontal scrolling component */
+.reel {
+  display: flex;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.reel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.reel > * {
+  flex: 0 0 auto;
+}
+
+.reel > * + * {
+  margin-inline-start: var(--reel-space, var(--space-md));
+}
+
+/* The Imposter - Centered overlay component */
+.imposter {
+  position: var(--imposter-positioning, absolute);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: var(--imposter-margin, 0);
+}
+
+/* The Icon - Self-contained icon component */
+.icon {
+  width: var(--icon-size, 1em);
+  height: var(--icon-size, 1em);
+  vertical-align: var(--icon-vertical-align, -0.125em);
+  fill: currentColor;
+}
+
+/* The Frame - Aspect ratio container */
+.frame {
+  --n: var(--frame-n, 16);
+  --d: var(--frame-d, 9);
+  aspect-ratio: var(--n) / var(--d);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: var(--frame-object-fit, cover);
+}
+
+/* ========================================
+   🎯 MODERN COMPOSABLE UTILITIES
+   ======================================== */
+
+/* Composable spacing */
+.space-stack {
+  --space: var(--stack-space, var(--space-md));
+}
+
+.space-stack > * + * {
+  margin-block-start: var(--space);
+}
+
+/* Composable text wrapping */
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
+.text-wrap-pretty {
+  text-wrap: pretty;
+}
+
+/* Modern scroll snap */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.scroll-snap-start {
+  scroll-snap-align: start;
+}
+
+.scroll-snap-center {
+  scroll-snap-align: center;
+}
+
+/* Container with built-in padding */
+.content-container {
+  width: min(
+    100% - var(--container-padding, var(--space-lg) * 2),
+    var(--container-max-width, var(--container-7xl))
+  );
+  margin-inline: auto;
+}
+
+/* ========================================
+   🌈 ADVANCED COLOR UTILITIES
+   ======================================== */
+
+/* Color mixing utilities using CSS color-mix */
+@supports (color: color-mix(in oklch, red, blue)) {
+  .color-mix-primary-10 {
+    background-color: color-mix(in oklch, rgb(var(--v-theme-primary)) 10%, transparent);
+  }
+
+  .color-mix-primary-20 {
+    background-color: color-mix(in oklch, rgb(var(--v-theme-primary)) 20%, transparent);
+  }
+
+  .color-mix-primary-30 {
+    background-color: color-mix(in oklch, rgb(var(--v-theme-primary)) 30%, transparent);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    border: 2px solid;
+  }
+
+  .card {
+    border: 1px solid;
+  }
+}
+
+/* ========================================
+   📐 ADVANCED LAYOUT PATTERNS
+   ======================================== */
+
+/* The Repel - Push elements to opposite ends */
+.repel {
+  display: flex;
+  justify-content: space-between;
+  align-items: var(--repel-align, center);
+  flex-wrap: var(--repel-wrap, nowrap);
+  gap: var(--repel-gap, var(--space-md));
+}
+
+/* The Center - More flexible centering */
+.center-advanced {
+  box-sizing: content-box;
+  margin-inline: auto;
+  padding-inline: var(--center-padding, var(--space-md));
+  max-inline-size: var(--center-max-width, var(--container-7xl));
+  display: var(--center-display, block);
+}
+
+/* The Region - Consistent vertical rhythm */
+.region {
+  padding-block: var(--region-space, var(--space-3xl));
+}
+
+.region + .region {
+  border-block-start: var(--region-border-width, 0) solid var(--region-border-color, transparent);
+}
+
+/* ========================================
+   🎨 MODERN STATE MANAGEMENT
+   ======================================== */
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--v-theme-surface-variant)) 25%,
+    rgb(var(--v-theme-surface)) 50%,
+    rgb(var(--v-theme-surface-variant)) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Empty states */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--empty-state-height, 400px);
+  padding: var(--space-3xl);
+  text-align: center;
+  color: rgb(var(--v-theme-on-surface-variant));
+}
+
+/* ========================================
+   🔮 FUTURE-PROOF ENHANCEMENTS
+   ======================================== */
+
+/* View transitions API support */
+@supports (view-transition-name: none) {
+  .page-transition {
+    view-transition-name: page-content;
+  }
+}
+
+/* Anchor positioning (when supported) */
+@supports (anchor-name: --example) {
+  .tooltip-anchor {
+    anchor-name: --tooltip-trigger;
+  }
+
+  .tooltip-content {
+    position: absolute;
+    top: anchor(--tooltip-trigger bottom);
+    left: anchor(--tooltip-trigger start);
+  }
+}
+
+/* ========================================
+   🎪 INTERACTION IMPROVEMENTS
+   ======================================== */
+
+/* Better focus management */
+.focus-trap:focus-within {
+  outline: 2px solid rgb(var(--v-theme-primary));
+  outline-offset: 2px;
+}
+
+/* Improved hover/focus for cards */
+.interactive-card {
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.interactive-card:hover,
+.interactive-card:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-2xl);
+}
+
+/* Smooth scrolling enhancements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-padding, var(--space-xl));
+}
+
+/* ========================================
+   🎯 COMPONENT-SPECIFIC ENHANCEMENTS
+   ======================================== */
+
+/* Enhanced button states */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--duration-slow) var(--ease-out);
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Enhanced form inputs */
+.form-input-enhanced {
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.form-input-enhanced:focus {
+  transform: scale(1.02);
+}
+
+/* Enhanced navigation */
+.nav-enhanced {
+  backdrop-filter: blur(10px);
+  background-color: color-mix(in oklch, rgb(var(--v-theme-surface)) 90%, transparent);
+}
+
+/* ========================================
+   🎭 ADVANCED ANIMATIONS
+   ======================================== */
+
+/* Morphing animations */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: var(--radius-lg);
+  }
+  25% {
+    border-radius: var(--radius-3xl) var(--radius-sm) var(--radius-lg) var(--radius-xl);
+  }
+  50% {
+    border-radius: var(--radius-sm);
+  }
+  75% {
+    border-radius: var(--radius-xl) var(--radius-3xl) var(--radius-sm) var(--radius-lg);
+  }
+}
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(var(--v-theme-primary-rgb), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(var(--v-theme-primary-rgb), 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }

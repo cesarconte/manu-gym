@@ -88,10 +88,14 @@ const handleViewDetails = () => {
   <v-card
     elevation="2"
     hover
-    class="transition-all-ease"
-    style="transition: all 0.3s ease; max-width: 100%"
+    class="responsive-card h-100 animate-fade-in-scale"
+    style="
+      transition:
+        transform var(--duration-normal) var(--ease-out),
+        box-shadow var(--duration-normal) var(--ease-out);
+    "
   >
-    <!-- Header con imagen/icono -->
+    <!-- Header con imagen/icono mejorado -->
     <div
       class="d-flex align-center justify-center position-relative overflow-hidden"
       :class="gradientClass"
@@ -103,24 +107,31 @@ const handleViewDetails = () => {
         :color="difficultyColor"
         size="small"
         class="position-absolute"
-        style="top: 12px; right: 12px"
+        style="top: var(--space-sm); right: var(--space-sm)"
         variant="elevated"
       >
         {{ classInfo.difficulty }}
       </v-chip>
     </div>
 
-    <!-- Contenido principal -->
-    <v-card-text class="pa-6">
-      <h3 class="text-h6 font-weight-semibold text-on-surface mb-2">{{ classInfo.name }}</h3>
-      <p class="text-body-2 text-medium-emphasis mb-4" style="line-height: 1.4">
-        {{ classInfo.description }}
-      </p>
+    <!-- Contenido principal con layout moderno -->
+    <v-card-text class="card-content pa-6">
+      <div class="stack" style="--stack-space: var(--space-sm)">
+        <h3 class="card-title text-fluid-heading-3 font-weight-semibold text-on-surface">
+          {{ classInfo.name }}
+        </h3>
+        <p class="card-description text-fluid-small text-medium-emphasis" style="line-height: 1.5">
+          {{ classInfo.description }}
+        </p>
+      </div>
 
-      <!-- Información del instructor -->
+      <!-- Información del instructor con mejor diseño -->
       <div
-        class="d-flex align-center pa-3 mb-4 rounded-lg bg-surface-variant"
-        style="background-color: rgba(var(--v-theme-surface-variant), 0.3)"
+        class="d-flex align-center pa-3 mb-4 rounded-lg bg-surface-variant media-wrapper"
+        style="
+          background-color: rgba(var(--v-theme-surface-variant), 0.3);
+          margin-top: var(--space-md);
+        "
       >
         <v-avatar size="32" class="me-3">
           <v-img
@@ -130,8 +141,8 @@ const handleViewDetails = () => {
           />
           <v-icon v-else>mdi-account</v-icon>
         </v-avatar>
-        <div>
-          <p class="text-body-2 font-weight-medium text-on-surface ma-0">
+        <div class="stack" style="--stack-space: var(--space-xs)">
+          <p class="text-fluid-small font-weight-medium text-on-surface ma-0">
             {{ classInfo.instructor.name }}
           </p>
           <p class="text-caption text-medium-emphasis ma-0">
@@ -140,8 +151,11 @@ const handleViewDetails = () => {
         </div>
       </div>
 
-      <!-- Detalles de la clase -->
-      <div class="d-flex flex-wrap ga-3 mb-4">
+      <!-- Detalles de la clase con cluster layout -->
+      <div
+        class="cluster mb-4"
+        style="--cluster-space: var(--space-xs); --cluster-justify: flex-start"
+      >
         <v-chip size="small" variant="tonal" class="text-caption">
           <v-icon start size="16">mdi-clock-outline</v-icon>
           {{ classInfo.duration }} min
@@ -158,43 +172,209 @@ const handleViewDetails = () => {
         </v-chip>
       </div>
 
-      <!-- Horarios disponibles -->
-      <div v-if="classInfo.schedule?.length" class="mb-2">
-        <h4 class="text-body-2 font-weight-medium text-on-surface mb-2">Próximas sesiones:</h4>
-        <div class="d-flex flex-wrap ga-2">
+      <!-- Información adicional con técnicas modernas -->
+      <div
+        class="cluster mt-4"
+        style="--cluster-space: var(--space-lg); --cluster-justify: space-between"
+      >
+        <div class="d-flex align-center">
+          <v-icon size="16" class="me-2 text-primary">mdi-clock-outline</v-icon>
+          <span class="text-fluid-small text-medium-emphasis">{{ classInfo.duration }} min</span>
+        </div>
+        <div class="d-flex align-center">
+          <v-icon size="16" class="me-2 text-primary">mdi-account-group</v-icon>
+          <span class="text-fluid-small text-medium-emphasis">
+            Max {{ classInfo.maxParticipants || 'N/A' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Horarios con diseño mejorado -->
+      <div class="mt-4">
+        <h4 class="text-fluid-small font-weight-medium text-on-surface mb-3">Horarios</h4>
+        <div class="reel" style="--reel-space: var(--space-sm)">
           <v-chip
-            v-for="(session, index) in classInfo.schedule.slice(0, 3)"
-            :key="index"
-            variant="outlined"
+            v-for="schedule in classInfo.schedule || []"
+            :key="`${schedule.day}-${schedule.time}`"
             size="small"
-            class="text-caption"
+            variant="outlined"
+            color="primary"
+            class="flex-shrink-0"
           >
-            <v-icon start size="14">mdi-calendar</v-icon>
-            {{ session.day }} {{ session.time }}
+            {{ schedule.day }} {{ schedule.time }}
           </v-chip>
+        </div>
+      </div>
+
+      <!-- Equipamiento si está disponible -->
+      <div v-if="classInfo.equipment" class="mt-4">
+        <div class="d-flex align-center">
+          <v-icon size="16" class="me-2 text-success">mdi-check-circle</v-icon>
+          <span class="text-fluid-small text-medium-emphasis">{{ classInfo.equipment }}</span>
         </div>
       </div>
     </v-card-text>
 
-    <!-- Acciones -->
-    <v-card-actions class="pa-3 pt-0 border-t-thin">
-      <v-btn variant="text" size="small" @click="handleViewDetails">
-        <v-icon start>mdi-information</v-icon>
-        Detalles
-      </v-btn>
-
-      <v-spacer />
-
-      <v-btn
-        color="primary"
-        variant="elevated"
-        size="small"
-        @click="handleReserve"
-        :disabled="classInfo.status === 'full'"
-      >
-        <v-icon start>{{ classInfo.status === 'full' ? 'mdi-lock' : 'mdi-calendar-plus' }}</v-icon>
-        {{ classInfo.status === 'full' ? 'Completa' : 'Reservar' }}
-      </v-btn>
+    <!-- Acciones con mejor diseño -->
+    <v-card-actions class="card-actions pa-6 pt-0">
+      <div class="w-100">
+        <div class="cluster" style="--cluster-space: var(--space-sm); --cluster-justify: stretch">
+          <v-btn
+            color="primary"
+            variant="elevated"
+            size="default"
+            class="btn-enhanced focus-visible-enhanced flex-grow-1"
+            style="min-width: 0"
+            @click="handleReserve"
+          >
+            <v-icon start size="18">mdi-calendar-plus</v-icon>
+            <span class="text-truncate">Reservar</span>
+          </v-btn>
+          <v-btn
+            color="primary"
+            variant="outlined"
+            size="default"
+            class="focus-visible-enhanced flex-grow-1"
+            style="min-width: 0"
+            @click="handleViewDetails"
+          >
+            <v-icon start size="18">mdi-information-outline</v-icon>
+            <span class="text-truncate">Detalles</span>
+          </v-btn>
+        </div>
+      </div>
     </v-card-actions>
   </v-card>
 </template>
+
+<style scoped>
+/* Estilos específicos del componente usando técnicas de Kevin Powell */
+.card-title {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.card-description {
+  text-wrap: pretty;
+  max-width: 45ch;
+}
+
+/* Enhanced hover effects */
+.responsive-card:hover .media-wrapper img,
+.responsive-card:hover .media-wrapper video {
+  transform: scale(1.03);
+}
+
+/* Smooth focus transitions */
+.responsive-card:focus-within {
+  outline: 2px solid rgba(var(--v-theme-primary), 0.5);
+  outline-offset: 2px;
+}
+
+/* Container queries for responsive card behavior */
+.responsive-card {
+  container-type: inline-size;
+}
+
+/* Small card adjustments */
+@container (max-width: 280px) {
+  .card-content {
+    padding: var(--space-md) !important;
+  }
+
+  .cluster {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .card-actions .cluster {
+    flex-direction: column !important;
+    gap: var(--space-xs) !important;
+  }
+}
+
+/* Medium card adjustments */
+@container (min-width: 281px) and (max-width: 400px) {
+  .reel {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+}
+
+/* Large card enhancements */
+@container (min-width: 401px) {
+  .card-content {
+    padding: var(--space-lg) !important;
+  }
+
+  .media-wrapper {
+    margin-top: var(--space-lg) !important;
+  }
+}
+
+/* Animation delays for staggered entrance */
+.responsive-card:nth-child(1) {
+  animation-delay: 0ms;
+}
+.responsive-card:nth-child(2) {
+  animation-delay: 100ms;
+}
+.responsive-card:nth-child(3) {
+  animation-delay: 200ms;
+}
+.responsive-card:nth-child(4) {
+  animation-delay: 300ms;
+}
+.responsive-card:nth-child(5) {
+  animation-delay: 400ms;
+}
+.responsive-card:nth-child(6) {
+  animation-delay: 500ms;
+}
+
+/* Loading skeleton state */
+.responsive-card.loading {
+  pointer-events: none;
+}
+
+.responsive-card.loading .card-title,
+.responsive-card.loading .card-description {
+  background: var(--loading-skeleton);
+  color: transparent;
+  border-radius: var(--radius-sm);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .responsive-card,
+  .media-wrapper img,
+  .media-wrapper video {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .responsive-card {
+    border: 2px solid;
+  }
+
+  .v-chip {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .card-actions {
+    display: none;
+  }
+
+  .responsive-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+</style>

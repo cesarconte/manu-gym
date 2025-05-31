@@ -1,0 +1,763 @@
+/**
+ * Container Queries System - Kevin Powell Modern CSS
+ * Sistema de consultas de contenedor para componentes verdaderamente responsivos
+ * Compatible con Vuetify 3 y Material Design 3
+ */
+
+/* ========================================
+   📦 CONTAINER QUERY UTILITIES
+   ======================================== */
+
+/* Base container setup */
+.container-query {
+  container-type: inline-size;
+}
+
+.container-query-normal {
+  container-type: normal;
+}
+
+.container-query-size {
+  container-type: size;
+}
+
+/* Named containers for specific components */
+.card-container {
+  container-name: card;
+  container-type: inline-size;
+}
+
+.hero-container {
+  container-name: hero;
+  container-type: inline-size;
+}
+
+.navigation-container {
+  container-name: navigation;
+  container-type: inline-size;
+}
+
+.content-container {
+  container-name: content;
+  container-type: inline-size;
+}
+
+/* ========================================
+   🎯 CARD COMPONENT QUERIES
+   ======================================== */
+
+.responsive-card {
+  container-type: inline-size;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+/* Small card layout */
+@container (max-width: 300px) {
+  .responsive-card .card-content {
+    padding: var(--space-sm);
+  }
+
+  .responsive-card .card-title {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-tight);
+  }
+
+  .responsive-card .card-description {
+    font-size: var(--text-xs);
+    margin-top: var(--space-xs);
+  }
+
+  .responsive-card .card-actions {
+    margin-top: var(--space-sm);
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .responsive-card .card-image {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+}
+
+/* Medium card layout */
+@container (min-width: 301px) and (max-width: 500px) {
+  .responsive-card .card-content {
+    padding: var(--space-md);
+  }
+
+  .responsive-card .card-title {
+    font-size: var(--text-base);
+    line-height: var(--line-height-normal);
+  }
+
+  .responsive-card .card-description {
+    font-size: var(--text-sm);
+    margin-top: var(--space-sm);
+  }
+
+  .responsive-card .card-actions {
+    margin-top: var(--space-md);
+    flex-direction: row;
+    gap: var(--space-sm);
+  }
+
+  .responsive-card .card-image {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+}
+
+/* Large card layout */
+@container (min-width: 501px) {
+  .responsive-card .card-content {
+    padding: var(--space-lg);
+  }
+
+  .responsive-card .card-title {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  .responsive-card .card-description {
+    font-size: var(--text-base);
+    margin-top: var(--space-md);
+  }
+
+  .responsive-card .card-actions {
+    margin-top: var(--space-lg);
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .responsive-card .card-image {
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+
+  /* Horizontal layout for large cards */
+  .responsive-card.card-horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+/* ========================================
+   🏠 HERO SECTION QUERIES
+   ======================================== */
+
+.responsive-hero {
+  container-type: inline-size;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+@container (max-width: 600px) {
+  .responsive-hero {
+    min-height: 60vh;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .responsive-hero .hero-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .responsive-hero .hero-subtitle {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-lg);
+    max-width: 90%;
+  }
+
+  .responsive-hero .hero-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .responsive-hero .hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@container (min-width: 601px) and (max-width: 1024px) {
+  .responsive-hero {
+    min-height: 70vh;
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .responsive-hero .hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .responsive-hero .hero-subtitle {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xl);
+    max-width: 80%;
+  }
+
+  .responsive-hero .hero-actions {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+}
+
+@container (min-width: 1025px) {
+  .responsive-hero {
+    min-height: 80vh;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .responsive-hero .hero-title {
+    font-size: clamp(2.5rem, 3vw, 4rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .responsive-hero .hero-subtitle {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2xl);
+    max-width: 70%;
+  }
+
+  .responsive-hero .hero-actions {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+}
+
+/* ========================================
+   🧭 NAVIGATION QUERIES
+   ======================================== */
+
+.responsive-navigation {
+  container-type: inline-size;
+}
+
+@container (max-width: 768px) {
+  .responsive-navigation .nav-links {
+    display: none;
+  }
+
+  .responsive-navigation .mobile-menu-trigger {
+    display: block;
+  }
+
+  .responsive-navigation .nav-brand {
+    font-size: var(--text-base);
+  }
+}
+
+@container (min-width: 769px) {
+  .responsive-navigation .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .responsive-navigation .mobile-menu-trigger {
+    display: none;
+  }
+
+  .responsive-navigation .nav-brand {
+    font-size: var(--text-lg);
+  }
+}
+
+/* ========================================
+   📊 STATS SECTION QUERIES
+   ======================================== */
+
+.responsive-stats {
+  container-type: inline-size;
+}
+
+@container (max-width: 480px) {
+  .responsive-stats .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .responsive-stats .stat-item {
+    text-align: center;
+    padding: var(--space-md);
+  }
+
+  .responsive-stats .stat-number {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--v-theme-primary));
+  }
+
+  .responsive-stats .stat-label {
+    font-size: var(--text-xs);
+    margin-top: var(--space-xs);
+  }
+}
+
+@container (min-width: 481px) and (max-width: 768px) {
+  .responsive-stats .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .responsive-stats .stat-item {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .responsive-stats .stat-number {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--v-theme-primary));
+  }
+
+  .responsive-stats .stat-label {
+    font-size: var(--text-sm);
+    margin-top: var(--space-sm);
+  }
+}
+
+@container (min-width: 769px) {
+  .responsive-stats .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .responsive-stats .stat-item {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .responsive-stats .stat-number {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-bold);
+    color: rgb(var(--v-theme-primary));
+  }
+
+  .responsive-stats .stat-label {
+    font-size: var(--text-base);
+    margin-top: var(--space-md);
+  }
+}
+
+/* ========================================
+   🎨 GALLERY QUERIES
+   ======================================== */
+
+.responsive-gallery {
+  container-type: inline-size;
+}
+
+@container (max-width: 600px) {
+  .responsive-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@container (min-width: 601px) and (max-width: 900px) {
+  .responsive-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@container (min-width: 901px) {
+  .responsive-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+/* ========================================
+   📱 FORM QUERIES
+   ======================================== */
+
+.responsive-form {
+  container-type: inline-size;
+}
+
+@container (max-width: 500px) {
+  .responsive-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .responsive-form .form-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .responsive-form .form-actions button {
+    width: 100%;
+  }
+}
+
+@container (min-width: 501px) {
+  .responsive-form .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .responsive-form .form-actions {
+    flex-direction: row;
+    gap: var(--space-md);
+    justify-content: flex-end;
+  }
+
+  .responsive-form .form-actions button {
+    width: auto;
+    min-width: 120px;
+  }
+}
+
+/* ========================================
+   🚀 ADVANCED CONTAINER PATTERNS - Kevin Powell
+   ======================================== */
+
+/* Component-specific containers */
+.product-grid-container {
+  container-name: product-grid;
+  container-type: inline-size;
+}
+
+.sidebar-container {
+  container-name: sidebar;
+  container-type: inline-size;
+}
+
+.header-container {
+  container-name: header;
+  container-type: inline-size;
+}
+
+/* ========================================
+   🎯 ADVANCED LAYOUT SWITCHING
+   ======================================== */
+
+/* Auto-switching layout based on container width */
+.auto-layout {
+  container-type: inline-size;
+}
+
+/* Stack layout for small containers */
+@container (max-width: 400px) {
+  .auto-layout .layout-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+}
+
+/* Sidebar layout for medium containers */
+@container (min-width: 401px) and (max-width: 800px) {
+  .auto-layout .layout-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* Three-column layout for large containers */
+@container (min-width: 801px) {
+  .auto-layout .layout-content {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: var(--space-lg);
+  }
+}
+
+/* ========================================
+   🃏 SMART CARD LAYOUTS
+   ======================================== */
+
+/* Adaptive card grid */
+.card-grid-adaptive {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Single column for small containers */
+@container (max-width: 300px) {
+  .card-grid-adaptive {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid-adaptive .card-item {
+    aspect-ratio: 1;
+  }
+}
+
+/* Two columns for medium containers */
+@container (min-width: 301px) and (max-width: 600px) {
+  .card-grid-adaptive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-grid-adaptive .card-item {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Three columns for larger containers */
+@container (min-width: 601px) and (max-width: 900px) {
+  .card-grid-adaptive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid-adaptive .card-item {
+    aspect-ratio: 3/4;
+  }
+}
+
+/* Four or more columns for very large containers */
+@container (min-width: 901px) {
+  .card-grid-adaptive {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .card-grid-adaptive .card-item {
+    aspect-ratio: 1;
+  }
+}
+
+/* ========================================
+   📱 RESPONSIVE COMPONENT BEHAVIOR
+   ======================================== */
+
+/* Navigation that adapts to container */
+.nav-adaptive {
+  container-type: inline-size;
+}
+
+/* Horizontal nav for wide containers */
+@container (min-width: 600px) {
+  .nav-adaptive .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-lg);
+    justify-content: space-between;
+  }
+
+  .nav-adaptive .nav-toggle {
+    display: none;
+  }
+}
+
+/* Collapsed nav for narrow containers */
+@container (max-width: 599px) {
+  .nav-adaptive .nav-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgb(var(--v-theme-surface));
+    border: 1px solid rgb(var(--v-theme-outline));
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .nav-adaptive .nav-list.is-open {
+    display: flex;
+  }
+
+  .nav-adaptive .nav-toggle {
+    display: block;
+  }
+}
+
+/* ========================================
+   🎨 STYLE QUERIES (Future-proofing)
+   ======================================== */
+
+/* Style queries for theme-aware components */
+@supports (container-type: style) {
+  @container style(--theme: dark) {
+    .style-aware-component {
+      border-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  @container style(--theme: light) {
+    .style-aware-component {
+      border-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+/* ========================================
+   🔧 CONTAINER UTILITY CLASSES
+   ======================================== */
+
+/* Container size utilities */
+.container-xs {
+  container-type: inline-size;
+  max-width: var(--bp-xs);
+}
+.container-sm {
+  container-type: inline-size;
+  max-width: var(--bp-sm);
+}
+.container-md {
+  container-type: inline-size;
+  max-width: var(--bp-md);
+}
+.container-lg {
+  container-type: inline-size;
+  max-width: var(--bp-lg);
+}
+.container-xl {
+  container-type: inline-size;
+  max-width: var(--bp-xl);
+}
+
+/* Container names for specific components */
+.cq-header {
+  container-name: header;
+  container-type: inline-size;
+}
+.cq-sidebar {
+  container-name: sidebar;
+  container-type: inline-size;
+}
+.cq-content {
+  container-name: content;
+  container-type: inline-size;
+}
+.cq-footer {
+  container-name: footer;
+  container-type: inline-size;
+}
+.cq-modal {
+  container-name: modal;
+  container-type: inline-size;
+}
+
+/* ========================================
+   🏗️ ADVANCED GRID PATTERNS
+   ======================================== */
+
+/* Auto-fit grid with container queries */
+.grid-auto-fit {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-md);
+}
+
+@container (max-width: 400px) {
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@container (min-width: 401px) and (max-width: 800px) {
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@container (min-width: 801px) {
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Masonry-like layout with container queries */
+.masonry-adaptive {
+  container-type: inline-size;
+}
+
+@container (max-width: 600px) {
+  .masonry-adaptive {
+    columns: 1;
+    column-gap: var(--space-lg);
+  }
+}
+
+@container (min-width: 601px) and (max-width: 900px) {
+  .masonry-adaptive {
+    columns: 2;
+    column-gap: var(--space-lg);
+  }
+}
+
+@container (min-width: 901px) {
+  .masonry-adaptive {
+    columns: 3;
+    column-gap: var(--space-lg);
+  }
+}
+
+/* ========================================
+   🎯 PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Optimized container queries with contain */
+.optimized-container {
+  container-type: inline-size;
+  contain: layout style paint;
+}
+
+/* Content visibility for large containers */
+.container-with-visibility {
+  container-type: inline-size;
+  content-visibility: auto;
+  contain-intrinsic-size: var(--contain-intrinsic-size, 300px);
+}
+
+/* ========================================
+   🎪 INTERACTIVE CONTAINERS
+   ======================================== */
+
+/* Hover-aware containers */
+.hover-container {
+  container-type: inline-size;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.hover-container:hover {
+  container-name: hovered;
+}
+
+@container hovered (min-width: 0px) {
+  .hover-content {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+/* Focus-aware containers */
+.focus-container {
+  container-type: inline-size;
+}
+
+.focus-container:focus-within {
+  container-name: focused;
+}
+
+@container focused (min-width: 0px) {
+  .focus-content {
+    outline: 2px solid rgb(var(--v-theme-primary));
+    outline-offset: 2px;
+  }
+}
